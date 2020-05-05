@@ -1,0 +1,44 @@
+.chat-messages {
+    overflow: auto;
+    border: solid;
+    height: 374px;
+    width: 700px;
+    padding: 10px;
+
+}
+
+.chat-message {
+    border: solid 1px;
+    min-height: 100px;
+    height: auto;
+    width: 650px;
+    background-color: lightblue;
+}
+
+.message-date {
+    font-weight: bold;
+    padding-left: 2px;
+}
+
+.message-username {
+
+}
+
+.message-text {
+    font-style: italic;
+    font-size: large;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.send-message {
+   
+}
+
+.chat-input {
+  
+}
+
+.chat-form {
+    margin-top: 20px;
+}

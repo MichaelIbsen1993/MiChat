@@ -1,3 +1,5 @@
+const formatMessage = require('./utils/messages');
+
 const path = require('path');
 const http = require('http');
 const express = require('express');
@@ -10,17 +12,22 @@ const io = socketio(server);
 io.on('connection', (socket) => {
 
     // current client.
-    socket.emit('message', socket.id);
+    socket.emit('message', 'test');
 
     // all users except the current client.
-    socket.broadcast.emit('message', `${socket.id} joined the chat.`);
+    socket.broadcast.emit('message', formatMessage(socket.id, 'has joined the chat.'));
 
     // everyone.
-    io.emit('message', socket.id);
+    io.emit('message', formatMessage(socket.id, 'greetings everyone'));
 
     // when the client leaves.
     socket.on('disconnect', () => {
-        io.emit('message', `${socket.id} left the chat`);
+        io.emit('message', formatMessage(socket.id, 'has left the chat.'));
+    });
+
+    // catch image from user input.
+    socket.on('chatMessage', message => { 
+        io.emit('message', formatMessage(socket.id, message));
     });
 });
 
